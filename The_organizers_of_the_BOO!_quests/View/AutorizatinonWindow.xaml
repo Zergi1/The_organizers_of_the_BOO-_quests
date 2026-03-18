@@ -1,0 +1,102 @@
+﻿<Window x:Class="The_organizers_of_the_BOO__quests.View.AutorizatinonWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:The_organizers_of_the_BOO__quests.View"
+        mc:Ignorable="d"
+        Title="БУ! Квесты — Вход" MinHeight="900" MinWidth="1600" 
+        Width="1920" Height="1080"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        ResizeMode="NoResize" Background="{StaticResource BackgroundBrush}"
+        WindowStyle="SingleBorderWindow">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1.2*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Левая панель с логотипом -->
+        <!--<Border Grid.Column="0" Background="{StaticResource LeftPanelGradient}">
+            <Viewbox Stretch="Uniform" MaxWidth="500" MaxHeight="500">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="БУ!" FontSize="180" FontWeight="Bold" 
+                               Foreground="{StaticResource ForegroundBrush}" 
+                               TextAlignment="Center"/>
+                    <TextBlock Text="квесты" FontSize="60" 
+                               Foreground="{StaticResource LightGrayBrush}"
+                               TextAlignment="Center" Margin="0,-30,0,0"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>-->
+        <Grid Grid.Column="0" >
+            <Grid.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF0D0D0D" Offset="1"/>
+                    <GradientStop Color="DarkRed" Offset="0.21"/>
+                </RadialGradientBrush>
+            </Grid.Background>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image Width="200" Source="/Icons/image.png" />
+                <TextBlock Text="БУ!" FontSize="120" FontWeight="Bold" 
+                               Foreground="{StaticResource ForegroundBrushLogo}" 
+                               TextAlignment="Center"/>
+                <TextBlock Text="Управление страхом" FontSize="46" FontWeight="Bold" 
+                               Foreground="{StaticResource ForegroundBrushLogo}" 
+                               TextAlignment="Center"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Правая панель: форма входа -->
+        <Border Grid.Column="1" Background="{StaticResource PanelBackgroundBrush}"
+        CornerRadius="30,0,0,30" Margin="30"
+        Effect="{StaticResource CardShadow}">
+            <Grid Margin="40,40,40,40">
+                <!-- Уменьшенные отступы -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2.5*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="2.5*"/>
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="135"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                    <Image Margin="0 0 0 30" Width="60" Source="/Icons/skull.png" />
+                    <TextBlock  Text="Добро пожаловать!" 
+                     FontSize="48" FontWeight="Bold"
+                     Margin="0,0,0,40" Foreground="{DynamicResource AccentBrush}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,0,0,25">
+                    <TextBlock Text="Логин" Margin="0,0,0,8" FontSize="20"/>
+                    <TextBox x:Name="LoginBox" FontSize="18" Height="50"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,0,0,40">
+                    <TextBlock Text="Пароль" Margin="0,0,0,8" FontSize="20"/>
+                    <PasswordBox x:Name="PasswordBox" FontSize="18" Height="50"/>
+                </StackPanel>
+
+                <Grid Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="Пробудить" Style="{StaticResource PrimaryButton}" 
+                    Width="200" Height="60" FontSize="20" Name="LoginBtn" Click="LoginBtn_Click"/>
+                    <Button Grid.Column="2" Content="Присоединиться" Style="{StaticResource SecondaryButton}"
+                    Width="250" Height="60" FontSize="20" Name="RegisterBtn" Click="RegisterBtn_Click"/>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
