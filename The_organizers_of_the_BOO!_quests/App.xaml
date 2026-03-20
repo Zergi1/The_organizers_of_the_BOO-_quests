@@ -151,6 +151,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        
         <Style x:Key="NavButtonStyle" TargetType="Button" BasedOn="{StaticResource SecondaryButton}">
             <Setter Property="HorizontalContentAlignment" Value="Left"/>
             <Setter Property="Padding" Value="15,10"/>

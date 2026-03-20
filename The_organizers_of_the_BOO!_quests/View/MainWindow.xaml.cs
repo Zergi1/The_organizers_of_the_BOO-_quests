@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using The_organizers_of_the_BOO__quests.View.Page;
 
 namespace The_organizers_of_the_BOO__quests.View
 {
@@ -22,6 +23,34 @@ namespace The_organizers_of_the_BOO__quests.View
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new MainPage());
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            AutorizatinonWindow authWindow = new AutorizatinonWindow();
+            authWindow.Show();
+            this.Close();
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new MainPage());
+        }
+
+        private void QuestsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new QuestsAndSchedulePage());
+        }
+
+        private void RitualsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new RitualsPage());
+        }
+
+        private void VictimsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new VictimsPage());
         }
     }
 }

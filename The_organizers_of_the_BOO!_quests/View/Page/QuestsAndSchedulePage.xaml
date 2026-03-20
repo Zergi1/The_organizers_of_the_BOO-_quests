@@ -1,0 +1,91 @@
+﻿<Page x:Class="The_organizers_of_the_BOO__quests.View.Page.QuestsAndSchedulePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:The_organizers_of_the_BOO__quests.View.Page"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="QuestsAndSchedulePage"
+      Background="Transparent">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Grid.Row="0" Text="Квесты и трафик" 
+                   FontSize="48" FontWeight="Bold"
+                   Foreground="{StaticResource AccentBrush}"
+                   Margin="0,0,0,30"/>
+
+         <!--Список карточек с 4 колонками--> 
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+            <ItemsControl x:Name="QuestsItemsControl" d:ItemsSource="{d:SampleData ItemCount=10}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="4" Margin="0,0,0,20"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="{StaticResource PanelBackgroundBrush}"
+                                CornerRadius="15"
+                                Margin="10"
+                                Effect="{StaticResource CardShadow}"
+                                HorizontalAlignment="Stretch">
+                            <Grid Margin="15">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                 <!--Изображение квеста (фиксированная высота, ширина подстраивается)--> 
+                                <Border Grid.Row="0" 
+                                        Background="{StaticResource InputBackgroundBrush}"
+                                        CornerRadius="10"
+                                        Height="150"
+                                        Margin="0,0,0,10">
+                                    <Image Source="/Icons/skull.png" 
+                                           Stretch="UniformToFill"
+                                           VerticalAlignment="Center"
+                                           Margin="5"/>
+                                </Border>
+
+                                 <!--Название--> 
+                                <TextBlock Grid.Row="1" 
+                                           Text="Имя" 
+                                           FontSize="22" 
+                                           FontWeight="Bold"
+                                           Foreground="{StaticResource AccentBrush}"
+                                           TextWrapping="Wrap"
+                                           Margin="0,0,0,5"/>
+
+                                 <!--Описание--> 
+                                <TextBlock Grid.Row="2" 
+                                           Text="Описание" 
+                                           FontSize="14"
+                                           Foreground="{StaticResource LightGrayBrush}"
+                                           TextWrapping="Wrap"
+                                           Margin="0,0,0,15"/>
+
+                                 <!--Кнопка--> 
+                                <Button Grid.Row="3" 
+                                        Content="Трафик"
+                                        Style="{StaticResource PrimaryButton}"
+                                        Height="40"
+                                        FontSize="16"
+                                        CommandParameter="{Binding Id}"/>
+                                <!--Click="TrafficButton_Click"/>-->
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Page>

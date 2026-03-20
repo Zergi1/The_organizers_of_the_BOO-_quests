@@ -8,45 +8,40 @@
         Title="БУ! Квесты Главное окно" MinHeight="900" MinWidth="1600" 
         Width="1920" Height="1080"
         WindowStartupLocation="CenterScreen" WindowState="Maximized"
-        ResizeMode="NoResize" Background="{StaticResource BackgroundBrush}"
+        ResizeMode="CanResize"  Background="{StaticResource BackgroundBrush}"
         WindowStyle="SingleBorderWindow">
-    <Grid>
+      <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="280"/>
-            <!-- Левая панель навигации -->
             <ColumnDefinition Width="*"/>
-            <!-- Основной контент -->
         </Grid.ColumnDefinitions>
 
-        <!-- Левая панель (навигация) -->
+        <!-- Левая панель -->
         <Border Grid.Column="0" Background="{StaticResource PanelBackgroundBrush}"
                 CornerRadius="0,20,20,0" Margin="0,20,0,20"
                 Effect="{StaticResource CardShadow}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
-                    <!-- Логотип -->
                     <RowDefinition Height="*"/>
-                    <!-- Кнопки навигации -->
                     <RowDefinition Height="Auto"/>
-                    <!-- Аккаунт и выход -->
                 </Grid.RowDefinitions>
 
-                <!-- Логотип компании (уменьшенный) -->
+                <!-- Логотип -->
                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,30">
                     <TextBlock Text="БУ!" FontSize="36" FontWeight="Bold" Foreground="{StaticResource AccentBrush}"/>
                     <TextBlock Text="квесты" FontSize="20" Foreground="{StaticResource LightGrayBrush}" VerticalAlignment="Bottom" Margin="5,0,0,5"/>
                 </StackPanel>
 
-                <!-- Навигационные кнопки -->
+                <!-- Кнопки навигации -->
                 <StackPanel Grid.Row="1" VerticalAlignment="Top" Margin="20,0,20,0">
-                    <Button x:Name="HomeButton" Content="🏠 Главная" Style="{StaticResource NavButtonStyle}" Tag="Home"  Margin="0,5"/>
-                    <Button x:Name="QuestsButton" Content="📊 Квесты и трафик" Style="{StaticResource NavButtonStyle}" Tag="Quests"  Margin="0,5"/>
-                    <Button x:Name="RitualsButton" Content="📅 Ритуалы (Брони)" Style="{StaticResource NavButtonStyle}" Tag="Rituals"  Margin="0,5"/>
-                    <Button x:Name="VictimsButton" Content="👥 Жертвы (Клиенты)" Style="{StaticResource NavButtonStyle}" Tag="Victims"  Margin="0,5"/>
+                    <Button x:Name="HomeButton" Content="🏠 Главная" Style="{StaticResource NavButtonStyle}" Click="HomeButton_Click" Margin="0,5"/>
+                    <Button x:Name="QuestsButton" Content="📊 Квесты и трафик" Style="{StaticResource NavButtonStyle}" Click="QuestsButton_Click" Margin="0,5"/>
+                    <Button x:Name="RitualsButton" Content="📅 Ритуалы (Брони)" Style="{StaticResource NavButtonStyle}" Click="RitualsButton_Click" Margin="0,5"/>
+                    <Button x:Name="VictimsButton" Content="👥 Жертвы (Клиенты)" Style="{StaticResource NavButtonStyle}" Click="VictimsButton_Click" Margin="0,5"/>
                 </StackPanel>
 
-                <!-- Нижняя часть: аккаунт и выход -->
+                <!-- Аккаунт и выход -->
                 <StackPanel Grid.Row="2" Margin="20,20,20,20">
                     <Border Background="{StaticResource InputBackgroundBrush}" CornerRadius="10" Padding="10" Margin="0,0,0,10">
                         <StackPanel Orientation="Horizontal">
@@ -54,23 +49,16 @@
                             <TextBlock x:Name="UserNickname" Text="Иван Васильевич" FontSize="18" Foreground="{StaticResource ForegroundBrush}" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Border>
-                    <Button x:Name="LogoutButton" Content="🚪 Выход" Style="{StaticResource SecondaryButton}"  Height="45" Cursor=""/>
+                    <Button x:Name="LogoutButton" Content="🚪 Выход" Style="{StaticResource SecondaryButton}" Click="LogoutButton_Click" Height="45"/>
                 </StackPanel>
             </Grid>
         </Border>
 
-        <!-- Основная область контента -->
-        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-            <Border Background="{StaticResource PanelBackgroundBrush}"
+        <!-- Основная область с Frame -->
+            <Border Grid.Column="1" Background="{StaticResource PanelBackgroundBrush}"
                     CornerRadius="20" Margin="20"
                     Effect="{StaticResource CardShadow}">
-                <ContentControl x:Name="MainContentArea" Margin="30">
-                    <!-- Здесь будет отображаться выбранная страница (пока просто текст) -->
-                    <TextBlock x:Name="ContentTextBlock" Text="Добро пожаловать в главное меню!" 
-                               FontSize="24" Foreground="{StaticResource LightGrayBrush}" 
-                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </ContentControl>
+                <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" />
             </Border>
-        </ScrollViewer>
     </Grid>
 </Window>
